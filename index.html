@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SP Mart Ultra Fast</title>
-<link rel="icon" href="mart.png">
+<title>SP Mart Ultra Fast Store</title>
 
 <style>
 *{
@@ -16,13 +15,12 @@ box-sizing:border-box;
 body{
 font-family:Arial,sans-serif;
 background:#eaeded;
-color:#111;
 }
 
 /* HEADER */
 header{
 background:#131921;
-color:white;
+color:#fff;
 padding:12px 20px;
 display:flex;
 justify-content:space-between;
@@ -35,7 +33,7 @@ z-index:999;
 }
 
 .logo{
-font-size:30px;
+font-size:28px;
 font-weight:bold;
 color:#facc15;
 }
@@ -44,7 +42,7 @@ color:#facc15;
 display:flex;
 flex:1;
 max-width:700px;
-min-width:260px;
+min-width:250px;
 }
 
 .search-box input{
@@ -52,7 +50,6 @@ width:100%;
 padding:12px;
 border:none;
 outline:none;
-font-size:15px;
 }
 
 .search-box button{
@@ -64,17 +61,16 @@ font-weight:bold;
 }
 
 #cartBtn{
-background:#facc15;
+background:#ffd814;
 color:#000;
 padding:10px 14px;
 border-radius:8px;
-font-weight:bold;
 cursor:pointer;
+font-weight:bold;
 }
 
 /* HERO */
 .hero{
-width:100%;
 height:320px;
 background:url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1600') center/cover;
 display:flex;
@@ -84,10 +80,10 @@ padding:30px;
 
 .hero-box{
 background:rgba(0,0,0,.55);
-color:white;
 padding:28px;
+color:white;
 border-radius:12px;
-max-width:450px;
+max-width:460px;
 }
 
 .hero h1{
@@ -96,20 +92,19 @@ margin-bottom:10px;
 }
 
 .hero p{
-margin-bottom:14px;
-line-height:1.5;
+margin-bottom:15px;
 }
 
 .hero button{
 padding:12px 18px;
 border:none;
-background:#facc15;
+background:#ffd814;
 font-weight:bold;
 cursor:pointer;
 border-radius:8px;
 }
 
-/* PRODUCT SLIDER */
+/* SLIDER */
 .slider{
 width:95%;
 height:320px;
@@ -139,7 +134,7 @@ opacity:1;
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-background:rgba(0,0,0,.65);
+background:rgba(0,0,0,.6);
 color:white;
 border:none;
 padding:12px;
@@ -148,8 +143,8 @@ cursor:pointer;
 z-index:2;
 }
 
-.prev{left:12px}
-.next{right:12px}
+.prev{left:10px}
+.next{right:10px}
 
 /* PRODUCTS */
 .products{
@@ -168,7 +163,7 @@ transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-6px);
 }
 
 .card img{
@@ -181,7 +176,7 @@ border-radius:8px;
 .card h3{
 font-size:16px;
 margin:10px 0;
-min-height:42px;
+min-height:40px;
 }
 
 .card p{
@@ -193,15 +188,14 @@ color:#b12704;
 .card button{
 width:100%;
 padding:10px;
-margin-top:10px;
 border:none;
 background:#ffd814;
 cursor:pointer;
 font-weight:bold;
 border-radius:8px;
+margin-top:10px;
 }
 
-/* LOAD MORE */
 .load-box{
 text-align:center;
 padding:20px;
@@ -212,8 +206,8 @@ padding:12px 20px;
 border:none;
 background:#131921;
 color:white;
-border-radius:8px;
 cursor:pointer;
+border-radius:8px;
 }
 
 /* CART */
@@ -262,7 +256,9 @@ cursor:pointer;
 font-weight:bold;
 }
 
-.buyBtn{background:#ffd814}
+.buyBtn{
+background:#ffd814;
+}
 
 /* POPUP */
 #popup{
@@ -288,11 +284,6 @@ text-align:center;
 padding:16px;
 margin-top:20px;
 }
-
-@media(max-width:768px){
-.hero h1{font-size:30px}
-.slider{height:240px}
-}
 </style>
 </head>
 
@@ -313,8 +304,8 @@ margin-top:20px;
 <section class="hero">
 <div class="hero-box">
 <h1>Biggest Sale 2026</h1>
-<p>Mobiles, Fashion, Electronics, Home & 1000+ Products Lowest Price.</p>
-<button onclick="window.scrollTo({top:420,behavior:'smooth'})">Shop Now</button>
+<p>Mobiles, Fashion, Electronics, Home & More.</p>
+<button onclick="window.scrollTo({top:450,behavior:'smooth'})">Shop Now</button>
 </div>
 </section>
 
@@ -361,55 +352,32 @@ margin-top:20px;
 <div id="popup"></div>
 
 <footer>
-© 2026 SP Mart Ultra Fast Store
+© 2026 SP Mart
 </footer>
 
-<!-- EMAILJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
 <script>
-/* EMAILJS */
-(function(){
-emailjs.init("YOUR_PUBLIC_KEY");
-})();
-
 let cart=[];
 
-/* UNIQUE PRODUCT DATA */
-const names=[
-"iPhone 15 Pro","Samsung Galaxy S25","Boat Headphones","Nike Shoes",
-"HP Laptop","Dell Laptop","Apple Watch","Steel Bottle",
-"Travel Bag","Canon Camera","Bluetooth Speaker","Gaming Mouse",
-"Mechanical Keyboard","Running Shoes","T-Shirt Black","Jeans Blue",
-"Office Chair","Study Lamp","Power Bank","Printer",
-"Coffee Mug","Wall Clock","Smart Tablet","Drone Camera",
-"VR Headset","Sunglasses","Perfume","Backpack",
-"Monitor HD","Mixer Grinder","Cookware Set","Yoga Mat"
-];
-
-const imgs=[
-"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600",
-"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600",
-"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600",
-"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",
-"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
-"https://images.unsplash.com/photo-1547949003-9792a18a2601?w=600",
-"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600",
-"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600",
-"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",
-"https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600",
-"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600",
-"https://images.unsplash.com/photo-1585386959984-a41552231658?w=600"
+/* PRODUCTS */
+const productData=[
+{name:"iPhone 15 Pro",img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600"},
+{name:"Gaming Laptop",img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600"},
+{name:"Apple Watch",img:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600"},
+{name:"Nike Shoes",img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
+{name:"Headphones",img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"},
+{name:"Travel Backpack",img:"https://images.unsplash.com/photo-1547949003-9792a18a2601?w=600"},
+{name:"Black T-Shirt",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"},
+{name:"Canon DSLR Camera",img:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600"}
 ];
 
 const products=[];
 
-/* 1200 PRODUCTS */
 for(let i=1;i<=1200;i++){
+let item=productData[i % productData.length];
 products.push({
-name:names[i % names.length] + " " + i,
-price:99 + (i*10),
-img:imgs[i % imgs.length]
+name:item.name+" "+i,
+price:99+(i*10),
+img:item.img
 });
 }
 
@@ -420,11 +388,11 @@ let filteredProducts=[...products];
 
 /* RENDER */
 function renderProducts(){
-const box=document.getElementById("products");
+let box=document.getElementById("products");
 box.innerHTML="";
 
 filteredProducts.slice(0,shown).forEach(p=>{
-box.innerHTML += `
+box.innerHTML+=`
 <div class="card">
 <img src="${p.img}" loading="lazy">
 <h3>${p.name}</h3>
@@ -437,18 +405,14 @@ renderProducts();
 
 /* LOAD MORE */
 function loadMore(){
-shown += 24;
+shown+=24;
 renderProducts();
 }
 
 /* SEARCH */
 document.getElementById("searchInput").addEventListener("keyup",function(){
 let val=this.value.toLowerCase();
-
-filteredProducts = products.filter(p =>
-p.name.toLowerCase().includes(val)
-);
-
+filteredProducts=products.filter(p=>p.name.toLowerCase().includes(val));
 shown=24;
 renderProducts();
 });
@@ -456,21 +420,19 @@ renderProducts();
 /* CART */
 function addToCart(name,price){
 cart.push({name,price});
-document.getElementById("count").innerText=cart.length;
-showPopup(name+" Added");
+count.innerText=cart.length;
+showPopup("Added to cart");
 }
 
-document.getElementById("cartBtn").onclick=function(){
-showCart();
-};
+cartBtn.onclick=showCart;
 
 function showCart(){
 let total=0;
 cartItems.innerHTML="";
 
 cart.forEach(i=>{
-cartItems.innerHTML += `<li>${i.name} ₹${i.price}</li>`;
-total += i.price;
+cartItems.innerHTML+=`<li>${i.name} ₹${i.price}</li>`;
+total+=i.price;
 });
 
 cartTotal.innerText="Total ₹"+total;
@@ -481,7 +443,7 @@ function closeCart(){
 cartModal.style.display="none";
 }
 
-/* PLACE ORDER EMAIL */
+/* PLACE ORDER DIRECT GMAIL */
 function placeOrder(){
 
 let name=custName.value;
@@ -499,42 +461,33 @@ showPopup("Cart Empty");
 return;
 }
 
-let items = cart.map(i=>i.name+" ₹"+i.price).join(", ");
-let total = cart.reduce((sum,i)=>sum+i.price,0);
+let items=cart.map(i=>i.name+" ₹"+i.price).join(", ");
+let total=cart.reduce((sum,i)=>sum+i.price,0);
 
-emailjs.send(
-"YOUR_SERVICE_ID",
-"YOUR_TEMPLATE_ID",
-{
-to_email:"martsp72@gmail.com",
-customer_name:name,
-customer_email:email,
-customer_phone:phone,
-customer_address:address,
-order_items:items,
-order_total:total
-}
-).then(function(){
+let subject=encodeURIComponent("New Order - SP Mart");
 
-showPopup("Order Sent");
-cart=[];
-count.innerText=0;
-closeCart();
+let body=encodeURIComponent(
+"Customer Name: "+name+"\n"+
+"Customer Email: "+email+"\n"+
+"Customer Phone: "+phone+"\n"+
+"Customer Address: "+address+"\n\n"+
+"Products:\n"+items+"\n\n"+
+"Total: ₹"+total
+);
 
-}).catch(function(){
-showPopup("Email Error");
-});
+window.open(
+"https://mail.google.com/mail/?view=cm&fs=1&to=martsp72@gmail.com&su="+subject+"&body="+body,
+"_blank"
+);
 
+showPopup("Opening Gmail...");
 }
 
 /* POPUP */
 function showPopup(msg){
 popup.innerText=msg;
 popup.classList.add("show");
-
-setTimeout(()=>{
-popup.classList.remove("show");
-},2000);
+setTimeout(()=>popup.classList.remove("show"),2000);
 }
 
 /* SLIDER */
